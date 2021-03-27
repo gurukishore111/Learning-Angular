@@ -1,0 +1,39 @@
+<h1>Welcome</h1>
+
+<!-- Event Binding || Data Binding-->
+
+<div class="play-container">
+  <p>
+    You've clicked <span (click)="countClick()">this</span
+    >{{ clickCounter }} times
+  </p>
+</div>
+
+<!-- Two way data binding -->
+
+<div class="play-container">
+  <p>
+    <input type="text" [(ngModel)]="name" />
+    <br />
+    <strong>You said:</strong>{{ name }}
+  </p>
+</div>
+
+<!-- NG-template Conditional render -->
+<!-- style binding -->
+<!-- [style.background-color]="clickCounter > 4 ? 'yellow' : 'lightgray' -->
+<!-- [ngStyle]="{
+    'background-color': clickCounter > 4 ? 'yellow' : 'lightgray',
+    border: clickCounter > 4 ? '4px solid black' : 'none'
+  }" -->
+<!-- [class.active]="clickCounter > 4"   -->
+<div class="play-container" [ngClass]="setClasses()">
+  <p>
+    <ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none">
+      <p>The click counter <strong>IS GREATER</strong> than a 4.</p>
+    </ng-template>
+    <ng-template #none>
+      <p>The click counter is <strong>Is NOT GREATER</strong> than a 4</p>
+    </ng-template>
+  </p>
+</div>
